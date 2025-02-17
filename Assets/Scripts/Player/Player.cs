@@ -1,11 +1,12 @@
 using DefaultNamespace;
+using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Player : MonoBehaviour,  IAlive
 {
     [SerializeField] private float speed;
     [SerializeField] public int collectItems = 0;
+    [SerializeField] public TextMeshProUGUI colItems;
     private Rigidbody2D _rb;
     public Joystick joystick;
 
@@ -35,5 +36,6 @@ public class Player : MonoBehaviour,  IAlive
     public void CollectItem()
     {
         collectItems += 1;
+        colItems.text = collectItems.ToString();
     }
 }

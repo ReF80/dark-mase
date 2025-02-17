@@ -9,6 +9,7 @@ namespace DefaultNamespace
             if (other.TryGetComponent(out IAlive alive))
             {
                 alive.CollectItem();
+                Destroy(gameObject);
             }
         }
     }
