@@ -7,7 +7,8 @@ namespace DefaultNamespace
 {
     public class Timer : MonoBehaviour
     {
-        [SerializeField] public float time = 0;
+        [SerializeField] public float time;
+        [SerializeField] private float currentTime = 0;
         [SerializeField] private bool isTime = false;
 
         [SerializeField] private TextMeshProUGUI timerText;
@@ -22,12 +23,22 @@ namespace DefaultNamespace
 
         private void Update()
         {
-            timerText.text = ((int)Time.deltaTime / 60 + ":" + (int)Time.deltaTime % 60).ToString(CultureInfo.InvariantCulture);
+            if (!isTime) return;
+            currentTime += Time.deltaTime;
+            DisplayTime(currentTime);
         }
-
+        
+        private void DisplayTime(float cTime)
+        {
+            int minutes = Mathf.FloorToInt(cTime / 60);
+            int seconds = Mathf.FloorToInt(cTime % 60);
+            
+            timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        }
+        
         private void EndTimer()
         {
-            time = Time.deltaTime;
+            time = currentTime;
             isTime = false;
         }
     }

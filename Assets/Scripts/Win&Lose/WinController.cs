@@ -6,6 +6,7 @@ namespace DefaultNamespace
     public class WinController : MonoBehaviour
     {
         [SerializeField] private GameObject panel;
+        public GameRating gameRating;
         public event Action OnEnd;
         private void OnTriggerStay2D(Collider2D other)
         {
@@ -13,6 +14,7 @@ namespace DefaultNamespace
             {
                 panel.SetActive(true);
                 OnEnd?.Invoke();
+                gameRating.CalculationRating();
             }
         }
     }

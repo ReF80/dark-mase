@@ -1,18 +1,39 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace DefaultNamespace
 {
     public class GameRating : MonoBehaviour
     {
+        [SerializeField] private Image[] star;
+        [SerializeField] private Text score;
         public Player player;
-        public WinController winController;
+        public Timer timer;
 
         public void CalculationRating()
         {
-            //3 stars if 3 collect items and time < 1 min
-            //2 stars if collect items > 1 and time < 1 min 10 sec
-            //1 star if collect items - 0 and time > 1 min 10 sec
+            score.text = (Mathf.RoundToInt(1000 - timer.time) * 1000 + player.collectItems * 10).ToString();
+            
+            if (player.collectItems == 3 && timer.time < 60)
+            {
+                ShowStars(3);
+                return;
+            }
+            if (player.collectItems > 0 && timer.time < 70)
+            {
+                ShowStars(2);
+                return;
+            }
+            ShowStars(1);
         }
-        
+
+        private void ShowStars(int count)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                star[i].color = Color.yellow;
+            }
+        }
     }
 }
