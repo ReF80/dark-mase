@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4740842730707188790}
   - component: {fileID: 8531326074613578410}
   - component: {fileID: -633587745629754692}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,3 +134,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 203ae11f6882ea841b4c24158b5fed39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  panelLose: {fileID: 0}

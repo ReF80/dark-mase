@@ -21,6 +21,7 @@ public class Player : MonoBehaviour,  IAlive
         if (joystick._joystickVec.y != 0)
         {
             _rb.velocity = new Vector2(joystick._joystickVec.x * speed, joystick._joystickVec.y * speed);
+            _rb.rotation = Mathf.Atan2(joystick._joystickVec.y, joystick._joystickVec.x) * Mathf.Rad2Deg - 90f;
         }
         else
         {
