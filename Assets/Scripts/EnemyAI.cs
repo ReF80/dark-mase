@@ -16,5 +16,6 @@ public class EnemeAI : MonoBehaviour
     private void Update()
     {
         _agent.SetDestination(player.position);
+        
     }
 }

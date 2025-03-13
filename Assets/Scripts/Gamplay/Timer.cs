@@ -18,7 +18,7 @@ namespace DefaultNamespace
         {
             timerText.text = time.ToString(CultureInfo.InvariantCulture);
             isTime = true;
-            winController.OnEnd += EndTimer;
+            winController.OnWin += WinTimer;
         }
 
         private void Update()
@@ -36,7 +36,7 @@ namespace DefaultNamespace
             timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         }
         
-        private void EndTimer()
+        private void WinTimer()
         {
             time = currentTime;
             isTime = false;
